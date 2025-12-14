@@ -1,0 +1,214 @@
+Agent - 1 output (intake.py)
+
+PS D:\Git_projects\RAG_agents_Project\Agents> python intake.py
+=== Nutrition Intake Agent ===
+Enter your name: Arun
+Enter your age: 22
+Enter your gender (male/female): male
+Enter your height (cm): 175
+Enter your weight (kg): 80
+Enter activity level (sedentary / lightly_active / moderately_active / very_active): lightly_active
+Enter goal (weight_loss / weight_gain): weight_loss
+Enter diet preference (vegetarian / nonvegetarian / mixed): vegetarian
+Enter allergies (comma separated, or none): none
+
+=== Agent-1 Output ===
+{'user_profile': {'name': 'Arun', 'age': 22, 'gender': 'male', 'height_cm': 175.0, 'weight_kg': 80.0, 'activity_level': 'lightly_active', 'goal': 'weight_loss', 'preference': 'vegetarian', 'allergies': []}, 'calculations': {'BMI': 26.12, 'BMR': 1788.75, 'TDEE': 2459.53, 'target_calories': 1959}, 'risk_flags': []}
+
+
+Agent - 2 output (ingest_kb.py)
+
+PS D:\Git_projects\RAG_agents_Project\Agents> python ingest_kb.py
+Starting KB ingestion...
+D:\Git_projects\RAG_agents_Project\Agents\ingest_kb.py:26: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
+  embeddings = HuggingFaceEmbeddings(
+D:\Git_projects\RAG_agents_Project\Agents\ingest_kb.py:36: LangChainDeprecationWarning: Since Chroma 0.4.x the manual persistence method is no longer supported as docs are automatically persisted.
+  db.persist()
+KB ingestion completed successfully!
+(about the warnings - LangChain is evolving rapidly. The warnings indicate upcoming package refactoring, but the current implementation is stable and production-ready for this prototype)
+
+Agent - 3 output (retriever.py)
+
+=== Retrieved Knowledge ===
+
+Result 1:
+6. Combining plant proteins such as grains + legumes helps achieve complete amino acid profiles.
+
+7. Protein recommendations should be adapted in meal planning to support the userâ€™s weight-loss goals and dietary preferences.
+----------------------------------------
+Result 2:
+3. Foods to limit include:
+   - Deep-fried snacks, pakodas, fries
+   - Excess nuts and nut butters
+   - Heavy cream-based dishes
+   - Highly processed vegetarian junk foods
+
+4. Balanced vegetarian meals include:
+   - A protein base (tofu, lentils, paneer)
+   - Two portions of vegetables (fiber for fullness)
+   - One portion of whole grains (quinoa, brown rice, millets)
+----------------------------------------
+Result 3:
+Title: Nutrition Guidelines for Non-Vegetarian Weight-Loss Diets
+
+1. Choose lean protein sources to maintain satiety while controlling calorie intake:
+   - Skinless chicken, turkey, and lean red meat
+   - Fish such as salmon, tuna, sardines, tilapia
+   - Eggs and low-fat dairy
+
+2. Benefits of lean protein:
+   - Helps maintain muscle mass
+   - Supports metabolism
+   - Reduces hunger and prevents overeating
+----------------------------------------
+Result 4:
+6. Tips for calorie control:
+   - Reduce visible fat on meats
+   - Avoid creamy sauces
+   - Prioritize vegetables to increase fullness
+
+7. Meal plans for non-vegetarian users should follow lean protein guidelines and avoid unhealthy cooking styles.
+
+
+Agent - 4 output (planner.py)
+
+PS D:\Git_projects\RAG_agents_Project\Agents> python planner.py
+
+===== GENERATED DIET PLAN =====
+
+**Personalized Meal Plan for Arun**
+
+**Calorie Goal:** 1800 kcal/day
+**Diet Preference:** Vegetarian
+**Allergies:** Peanut
+**Weight Loss Goal:** Safe calorie deficit of 500 kcal/day
+
+**Breakfast:**
+- Oatmeal with Banana and Almond Milk
+  - 250g cooked oatmeal (150 kcal)
+  - 1 medium banana (105 kcal)
+  - 250ml almond milk (30 kcal)
+  Total Calories: 285 kcal
+
+**Lunch:**
+- Whole Wheat Roti with Lentil Curry and Mixed Vegetables
+  - 2 whole wheat rotis (120 kcal)
+  - 100g cooked lentils (160 kcal)
+  - 1 cup mixed vegetables (50 kcal)
+  Total Calories: 330 kcal
+
+**Snack:**
+- Apple Slices with Hummus
+  - 1 medium apple (95 kcal)
+  - 2 tbsp hummus (100 kcal)
+  Total Calories: 195 kcal
+
+**Dinner:**
+- Grilled Tofu with Brown Rice and Steamed Broccoli
+  - 100g grilled tofu (120 kcal)
+  - 100g cooked brown rice (110 kcal)
+  - 1 cup steamed broccoli (55 kcal)
+  Total Calories: 285 kcal
+
+**Total Calories:** 1095 kcal (short of target by 705 kcal)
+**Additional Snack:**
+- 1 cup mixed berries with 1 tablespoon almond butter (150 kcal)
+  This will bring the total calories to 1245 kcal, still short of the target by 555 kcal. To meet the target, consider adding a small portion of nuts or seeds to the snack.
+
+**Tips:**
+
+1. Drink plenty of water throughout the day to stay hydrated.
+2. Incorporate physical activity, such as a 30-minute walk, to aid in weight loss.
+3. Eat smaller, frequent meals to manage hunger and portion control.
+4. Choose whole, unprocessed foods whenever possible to ensure optimal nutrition.
+5. Consult with a healthcare professional or registered dietitian for personalized advice.
+
+Agent - 5 output (safety.py)
+
+PS D:\Git_projects\RAG_agents_Project\Agents> python safety.py
+
+
+Orchestoator.py output
+
+PS D:\Git_projects\RAG_agents_Project> python Orchestoator.py
+
+=== Personalized Nutrition Planner ===
+
+Enter your name: Arun Ghatage
+Enter your age: 22
+Enter your gender (male/female): male
+Enter your height (cm): 175
+Enter your weight (kg): 80
+Enter activity level (sedentary / lightly_active / moderately_active / very_active): moderately_active
+Enter goal (weight_loss / weight_gain): weight_loss
+Diet preference (vegetarian / nonvegetarian / mixed): mixed
+Enter allergies (comma separated or 'none'): none
+
+===== AGENTIC RAG PIPELINE STARTED =====
+
+▶ Running Agent-1: Intake Agent
+▶ Running Agent-3: Retriever Agent
+D:\Git_projects\RAG_agents_Project\Agents\retriever.py:21: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the `langchain-huggingface package and should be used instead. To use it run `pip install -U `langchain-huggingface` and import as `from `langchain_huggingface import HuggingFaceEmbeddings``.
+  embeddings = HuggingFaceEmbeddings(
+D:\Git_projects\RAG_agents_Project\Agents\retriever.py:26: LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 and will be removed in 1.0. An updated version of the class exists in the `langchain-chroma package and should be used instead. To use it run `pip install -U `langchain-chroma` and import as `from `langchain_chroma import Chroma``.
+  db = Chroma(
+▶ Running Agent-4: Planner Agent
+▶ Running Agent-5: Safety Agent
+
+===== FINAL SAFE DIET PLAN =====
+
+**Personalized Meal Plan for Arun Ghatage**
+
+Based on your preferences and requirements, I've created a 1-day meal plan for you.
+
+**Breakfast:**
+- Oatmeal with Banana and Almond Milk
+  - 250g cooked oatmeal (300 kcal)
+  - 1 medium banana (100 kcal)
+  - 250ml almond milk (30 kcal)
+  - 1 tablespoon almond butter (100 kcal)
+  Total Calories: 530 kcal
+
+**Lunch:**
+- Grilled Chicken and Vegetable Wrap
+  - 1 whole wheat tortilla (100 kcal)
+  - 2 oz grilled chicken breast (120 kcal)
+  - 1 cup mixed greens (20 kcal)
+  - 1/2 cup sliced cucumber (10 kcal)
+  - 1/2 cup sliced bell peppers (45 kcal)
+  - 1 tablespoon hummus (100 kcal)
+  Total Calories: 395 kcal
+
+**Snack:**
+- Apple and Peanut Butter
+  - 1 medium apple (95 kcal)
+  - 2 tablespoons peanut butter (190 kcal)
+  Total Calories: 285 kcal
+
+**Dinner:**
+- Baked Salmon with Quinoa and Steamed Broccoli
+  - 3 oz baked salmon (180 kcal)
+  - 1/2 cup cooked quinoa (100 kcal)
+  - 1 cup steamed broccoli (55 kcal)
+  Total Calories: 335 kcal
+
+**Total Calories:** 1545 kcal (short of the target by 727 kcal)
+
+To meet your target calorie intake, consider adding the following:
+- 1 medium avocado (140 kcal) for a snack or as a side dish
+- 1 cup mixed nuts (170 kcal) as a snack
+- 1 cup Greek yogurt (100 kcal) as a snack or dessert
+
+**Tips:**
+
+1. Stay hydrated by drinking plenty of water throughout the day.
+2. Incorporate physical activity, such as a 30-minute walk, to help with weight loss.
+3. Eat mindfully and savor your food to avoid overeating.
+4. Consider consulting a healthcare professional or registered dietitian for personalized advice.
+
+Remember, a balanced diet and regular exercise are key to achieving your weight loss goals.
+
+⚠️ Safety Note:
+This diet plan is for general wellness only and is not a medical prescription. Please consult a healthcare professional for medical conditions.
+
+===== PIPELINE COMPLETED SUCCESSFULLY =====
